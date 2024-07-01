@@ -1,0 +1,53 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <h1>index</h1>
+
+    <ul>
+        {% comment %} 인증 정보가 없다면 보여주는 있으면 {% endcomment %}
+        {% if not user.is_authenticated %}
+      <li>
+        <a href="{% url "common:register" %}">회원가입</a>
+      </li>
+      <li>
+        <a href="{% url "common:login" %}">로그인</a>
+      </li>
+      <li>
+        <a href="{% url "common:password_reset" %}">비밀번호 초기화</a>
+      </li>
+      {% else %}
+      <li>
+          <a href="#" id="logout">로그아웃</a>
+        </li>  
+
+        <li>
+            <a href="{% url "common:password_change" %}" id="logout">비밀번호 변경</a>
+          </li> 
+        {% endif %}
+
+    </ul>
+
+    <form action="{% url "common:logout" %}" method="post" id="logout_form">
+        {% csrf_token %}    
+    </form>
+
+    <script src="{% static "/js/index.js" %}">
+
+        {% comment %} 로그아웃 클릭시  a 태그 기능 중지 후 폼 찾고 전송 {% endcomment %}
+
+       
+
+    </script>
+
+  </body>
+
+</html>

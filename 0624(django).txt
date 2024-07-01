@@ -1,0 +1,67 @@
+달리 명시하지 않는 한, 메모장에 옮기면서 깔끔하게 정보를 정리하지 않고 그대로 작성하겠습니다:
+
+---
+
+**장고(Django, Python) == 스프링 부트**
+
+**설정:**
+- 다른 폴더명 사용 가능
+- `django-admin startproject config .`
+- `python manage.py startapp 앱이름`
+- `python manage.py migrate` (데이터베이스 변경사항 적용)
+- `python manage.py runserver`
+- `python manage.py createsuperuser` (어드민 계정 생성)
+
+**모델 정의 및 수정:**
+- 앱 추가 후 모델스에서 모델 정의
+
+**데이터베이스 변경 및 적용:**
+- `python manage.py makemigrations` (데이터베이스 변경 사항 확인)
+- `python manage.py migrate` (데이터베이스 변경사항 적용)
+- `python manage.py sqlmigrate 앱이름 번호` (SQL 코드 확인를 확인하는 코드이다 
+)
+
+**스프링 MVC 패턴:**
+- Model(Database), View(화면단-jsp, 템플릿 html), Controller(Controller + Service)
+- URL은 Controller 위에 경로 지정
+
+**장고 MTV 패턴:**
+- Model(Database), Templates(html), View(View)
+- urls.py에서 URL 정의
+  1. `config/urls.py`
+  2. 각 앱/urls.py
+
+**ORM(객체 관계 매핑):**
+- 데이터베이스와의 상호 작용을 위해 사용
+
+**순서:**
+1. 파일 만들기
+2. 위에 명령어 순서대로 진행
+
+---
+
+
+
+sql 쿼리문 대체
+
+select * from person; == Person.object.all()
+
+insert into values(); == person = Person() person.save()	
+		     Person.objects.create(first_name='pakr',last_name='jiho')
+
+select * from person where first_name='park';
+==
+Person.objects.get(first_name='park')
+
+== 
+
+Pserson.objercts.filter(first_name='park'
+
+
+Person.objects.get() : 이거는 없는 로우를 찾으려면 에러가 나지만
+
+Person.objects.filter() : 이거는 없는 로우를 찾아도 에러가 나지 않는다 그냥 빈걸 반환함
+
+Person.objects.filter(firnst_name__contains'pa') : 'pa' 가 포함되어 있는을 검색한다 (like의 의미가 있다)
+
+Person.objects.filter(firnst_name__icontains'pa') : 

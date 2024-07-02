@@ -1,35 +1,32 @@
-<footer class="border-top">
-  <div class="container px-4 px-lg-5">
-    <div class="row gx-4 gx-lg-5 justify-content-center">
-      <div class="col-md-10 col-lg-8 col-xl-7">
-        <ul class="list-inline text-center">
-          <li class="list-inline-item">
-            <a href="#!">
-              <span class="fa-stack fa-lg">
-                <i class="fas fa-circle fa-stack-2x"></i>
-                <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
-              </span>
-            </a>
-          </li>
-          <li class="list-inline-item">
-            <a href="#!">
-              <span class="fa-stack fa-lg">
-                <i class="fas fa-circle fa-stack-2x"></i>
-                <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
-              </span>
-            </a>
-          </li>
-          <li class="list-inline-item">
-            <a href="#!">
-              <span class="fa-stack fa-lg">
-                <i class="fas fa-circle fa-stack-2x"></i>
-                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-              </span>
-            </a>
-          </li>
-        </ul>
-        <div class="small text-center text-muted fst-italic">Copyright &copy; Your Website 2023</div>
-      </div>
+{% load static %}
+{% load social_share %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ post.title }}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  </head>
+
+  <body>
+    <div class="post-detail">
+      <h1>{{ post.title }}</h1>
+      <p>{{ post.content }}</p>
+      <ul class="list-inline">
+        <li class="list-inline-item">
+          {% post_to_twitter post.get_absolute_url "[New Post] {{ post.title }}" %}
+        </li>
+        <li class="list-inline-item">
+          {% post_to_facebook post.get_absolute_url %}
+        </li>
+        <li class="list-inline-item">
+          {% post_to_telegram post.get_absolute_url "[New Post] {{ post.title }}" %}
+        </li>
+      </ul>
     </div>
-  </div>
-</footer>
+  </body>
+
+</html>

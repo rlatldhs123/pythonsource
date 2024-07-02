@@ -27,16 +27,18 @@
         {% endfor %}
         <!-- Pager-->
         <div class="d-flex justify-content-center mb-4">
-          <a class="btn btn-primary text-uppercase" href="#!">이전
-          </a>
+          {% if posts.has_previous %}
+            <a class="btn btn-primary text-uppercase" href="?page={{ posts.previous_page_number }}">이전</a>
+          {% endif %}
 
-          <a class="btn btn-primary text-uppercase" href="#!">1/5
-          </a>
+          <span class="btn btn-primary text-uppercase">{{ posts.number }}
+            /
+            {{ posts.paginator.num_pages }}</span>
 
-          <a class="btn btn-primary text-uppercase" href="#!">다음
-          </a>
+          {% if posts.has_next %}
+            <a class="btn btn-primary text-uppercase" href="?page={{ posts.next_page_number }}">다음</a>
+          {% endif %}
         </div>
-
       </div>
     </div>
   </div>

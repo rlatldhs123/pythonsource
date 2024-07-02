@@ -14,4 +14,9 @@ urlpatterns = [
     path("post/modify/<int:post_id>", views.modify, name="modify"),
     # /blog/post/delete/1
     path("post/delete/<int:post_id>", views.delete, name="delete"),
+    # /blog/post/comment/<post_id>
+    path("post/comment/<int:post_id>", views.comment_create, name="comment_create"),
+    # /blog/post/comment/<post_id>
+    # 좋아요
+    path("post/like/<int:post_id>", views.post_like, name="post_like"),
 ]
